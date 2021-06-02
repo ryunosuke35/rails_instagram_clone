@@ -1,5 +1,6 @@
 <h1>投稿</h1>
-
+<%= link_to '新規投稿', new_picture_path %>
+<%= link_to 'お気に入り一覧', favorites_path %>
 <table>
   <tbody>
     <% @pictures.each do |picture| %>
@@ -14,5 +15,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to '新規投稿', new_picture_path %>
