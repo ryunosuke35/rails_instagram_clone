@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>投稿</h1>
 
 <table>
@@ -7,6 +5,7 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= image_tag picture.image.url, size: '300x200' %></td>
+        <td><%= picture.content%></td>
         <td><%= picture.user.name%></td>
         <td><%= link_to '詳細', picture_path(picture.id) %></td>
         <td><%= link_to '編集', edit_picture_path(picture.id) %></td>
@@ -15,7 +14,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
 
 <%= link_to '新規投稿', new_picture_path %>

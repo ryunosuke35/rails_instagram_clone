@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-  <%= image_tag @picture.image.url %>
+  <%= image_tag @picture.image.url, size: '400x300' %>
 <%= link_to '編集', edit_picture_path(@picture.id) %> |
 <%= link_to '一覧へ戻る', pictures_path %>

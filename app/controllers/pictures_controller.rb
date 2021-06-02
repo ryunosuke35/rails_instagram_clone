@@ -17,7 +17,7 @@ class PicturesController < ApplicationController
     # @picture = Picture.new(picture_params)
     # @picture.user_id = current_user.id
     @picture = current_user.pictures.build(picture_params)
-    render :new if picture.invalid?
+    render :new if @picture.invalid?
   end
 
   def edit
@@ -40,13 +40,13 @@ class PicturesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
+    # respond_to do |format|
       if @picture.update(picture_params)
-        format.html { redirect_to pictures_path, notice: "投稿が完了しました！" }
+        redirect_to pictures_path, notice: "投稿が完了しました！"
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        render :edit
       end
-    end
+    # end
   end
 
   def destroy
@@ -63,6 +63,6 @@ class PicturesController < ApplicationController
     end
 
     def picture_params
-      params.require(:picture).permit(:image, :image_cache)
+      params.require(:picture).permit(:image, :image_cache, :content)
     end
 end
