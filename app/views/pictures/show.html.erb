@@ -12,6 +12,5 @@
   <% end %>
 <% end %>
 
-
-<%= link_to '編集', edit_picture_path(@picture.id) %> |
+<%= link_to_if(User.find(@picture.user_id) == current_user, '編集', edit_picture_path(@picture.id)){} %> |
 <%= link_to '一覧へ戻る', pictures_path %>

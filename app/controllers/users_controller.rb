@@ -23,18 +23,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    # path = Rails.application.routes.recognize_path(request.referer)
-    # if path[:action] == "edit"
-    #
-    #
-    #   @user = User.new(params[:user][:profile_picture])
-    # else
-      @user = User.new(user_params)
-      if @user.save
-        redirect_to user_path(@user.id)
-      else
-        render :new
-      end
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to user_path(@user.id)
+    else
+      render :new
+    end
   end
 
 

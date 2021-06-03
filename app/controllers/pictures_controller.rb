@@ -16,11 +16,15 @@ class PicturesController < ApplicationController
   def confirm
     # @picture = Picture.new(picture_params)
     # @picture.user_id = current_user.id
+
     @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
 
   def edit
+    if User.find(@picture.user_id) != current_user
+     redirect_to pictures_path
+   end
   end
 
   def show
@@ -31,30 +35,27 @@ class PicturesController < ApplicationController
     # @picture = Picture.new(picture_params)
     # @picture.user_id = current_user.id
     @picture = current_user.pictures.build(picture_params)
-    respond_to do |format|
-      if @picture.save
-        format.html { redirect_to pictures_path, notice: "投稿が完了しました！" }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @picture.save
+      redirect_to pictures_path, notice: "投稿が完了しました！"
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    # respond_to do |format|
-      if @picture.update(picture_params)
-        redirect_to pictures_path, notice: "投稿が完了しました！"
-      else
-        render :edit
-      end
-    # end
+    if @picture.update(picture_params)
+      redirect_to pictures_path, notice: "投稿が完了しました！"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if User.find(@picture.user_id) != current_user
+     redirect_to pictures_path
+    else
     @picture.destroy
-    respond_to do |format|
-      format.html { redirect_to pictures_url, notice: "削除しました！" }
-      format.json { head :no_content }
+     redirect_to pictures_url, notice: "削除しました！"
     end
   end
 
@@ -64,6 +65,6 @@ class PicturesController < ApplicationController
     end
 
     def picture_params
-      params.require(:picture).permit(:image, :image_cache, :content)
+      params.require(:picture).permit(:id, :image, :image_cache, :content)
     end
 end

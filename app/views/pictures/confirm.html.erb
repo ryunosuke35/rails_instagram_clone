@@ -1,5 +1,5 @@
 <h1>確認画面</h1>
-<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+<%= form_with(model: @picture, url: picture_path(@picture.id), local: true, method: :patch) do |form| %>
   <%= image_tag(@picture.image.url, size: '400x300') if @picture.image && @picture.image.url %>
   <%= @picture.content%>
   <%= form.hidden_field :content %>
