@@ -10,14 +10,16 @@
   </div>
 <% end %>
 
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :名前 %>
-  <%= f.text_field :name %>
-  <%= f.label :メールアドレス %>
-  <%= f.email_field :email %>
-  <%= f.label :パスワード %>
-  <%= f.password_field :password %>
-  <%= f.label :パスワードの確認 %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "アカウントを作成する" %>
+<%= form_with(model: @user, local: true) do |form| %>
+  <%= form.label :名前 %>
+  <%= form.text_field :name %>
+  <%= form.label :メールアドレス %>
+  <%= form.email_field :email %>
+  <%= form.label :パスワード %>
+  <%= form.password_field :password %>
+  <%= form.label :パスワードの確認 %>
+  <%= form.password_field :password_confirmation %>
+  <%= form.label :プロフィール画像 %>
+  <%= form.file_field :profile_picture %>
+  <%= form.submit "アカウントを作成する" %>
 <% end %>
