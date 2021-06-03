@@ -22,6 +22,7 @@ class PicturesController < ApplicationController
   end
 
   def edit
+
     if User.find(@picture.user_id) != current_user
      redirect_to pictures_path
    end
@@ -36,6 +37,8 @@ class PicturesController < ApplicationController
     # @picture.user_id = current_user.id
     @picture = current_user.pictures.build(picture_params)
     if @picture.save
+       PictureMailer.picture_mail(@picture).deliver
+
       redirect_to pictures_path, notice: "投稿が完了しました！"
     else
       render :new, status: :unprocessable_entity

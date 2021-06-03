@@ -33,6 +33,7 @@ group :development do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'meta_request'
+  gem 'letter_opener_web'
 end
 
 group :test do
