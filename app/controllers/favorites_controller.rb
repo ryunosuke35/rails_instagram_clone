@@ -1,7 +1,6 @@
 class FavoritesController < ApplicationController
   def index
     @favorites = current_user.favorites
-    binding.pry
   end
 
   def create
