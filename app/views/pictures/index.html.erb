@@ -5,7 +5,7 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        <td><%= image_tag picture.image.url, size: '300x200' %></td>
+        <td><%= image_tag picture.image.url %></td>
         <td><%= picture.content%></td>
         <td><%= picture.user.name%></td>
         <td><%= link_to '詳細', picture_path(picture.id) %></td>

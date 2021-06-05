@@ -13,7 +13,7 @@
   <% end %>
 
   <div class="field">
-    <%= image_tag(picture.image.url, size: '400x300') if picture.image && picture.image.url %>
+    <%= image_tag(picture.image.url) if picture.image && picture.image.url %>
     <%= form.text_area :content, size: "50x6" %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
