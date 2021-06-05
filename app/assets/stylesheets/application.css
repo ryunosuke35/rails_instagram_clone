@@ -21,9 +21,7 @@
  body {
    width:100%;
    text-align: center;
- }
- li{
-     list-style:none;
+   font-family: Hannotate SC;
  }
  ul{
      padding:0;
@@ -99,5 +97,8 @@
   .table_scroll{
     height: 750px;
     overflow: scroll;
+
+  }
+  h2{
 
   }

@@ -1,7 +1,7 @@
 <h1>新規登録</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <h2><%= @user.errors.count %> 件のエラーがあります</h2>
     <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -11,15 +11,28 @@
 <% end %>
 
 <%= form_with(model: @user, local: true) do |form| %>
-  <%= form.label :名前 %>
-  <%= form.text_field :name %>
-  <%= form.label :メールアドレス %>
-  <%= form.email_field :email %>
-  <%= form.label :パスワード %>
-  <%= form.password_field :password %>
-  <%= form.label :パスワードの確認 %>
-  <%= form.password_field :password_confirmation %>
-  <%= form.label :プロフィール画像 %>
-  <%= form.file_field :profile_picture %>
+  <table>
+    <tr>
+      <td><%= form.label :名前 %></td>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :メールアドレス %></td>
+      <td><%= form.email_field :email %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :パスワード %></td>
+      <td><%= form.password_field :password %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :確認用パスワード %></td>
+      <td><%= form.password_field :password_confirmation %></td>
+    </tr>
+    <tr></tr>
+    <tr>
+      <td><%= form.label :プロフィール画像 %></td>
+      <td><%= form.file_field :profile_picture %></td>
+    </tr>
+  </table>
   <%= form.submit "アカウントを作成する" %>
 <% end %>
