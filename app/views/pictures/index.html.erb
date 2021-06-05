@@ -1,17 +1,21 @@
-<h1>投稿</h1>
-<%= link_to '新規投稿', new_picture_path %>
-<%= link_to 'お気に入り一覧', favorites_path %>
-<table>
-  <tbody>
+<h2>投稿</h2>
+<br>
+<%= link_to '新規投稿', new_picture_path, class: 'btn btn-default' %>
+<%= link_to 'お気に入り一覧', favorites_path, class: 'btn btn-default' %>
+
+<div class="table_scroll">
+  <table>
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= image_tag picture.image.url %></td>
         <td><%= picture.content%></td>
         <td><%= picture.user.name%></td>
-        <td><%= link_to '詳細', picture_path(picture.id) %></td>
-        <td><%= link_to_if(User.find(picture.user_id) == current_user, '編集', edit_picture_path(picture.id)){} %></td>
-        <td><%= link_to_if(User.find(picture.user_id) == current_user, '削除', picture_path(picture.id), method: :delete, data: { confirm: '本当に削除しますか？' }){} %></td>
+        <td><%= link_to '詳細', picture_path(picture.id), class: 'btn btn-default'  %></td>
+        <td><%= link_to_if(User.find(picture.user_id) == current_user, '編集',
+                           edit_picture_path(picture.id), class: 'btn btn-default'){} %></td>
+        <td><%= link_to_if(User.find(picture.user_id) == current_user, '削除',
+                          picture_path(picture.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-default'){} %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table>
+</div>

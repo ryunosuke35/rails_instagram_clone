@@ -1,5 +1,5 @@
-<h1>新規投稿</h1>
-
-<%= render partial: 'form', locals: { picture: @picture } %>
-
-<%= link_to '戻る', pictures_path %>
+<h2>新規投稿</h2>
+<br>
+  <%= render partial: 'form', locals: { picture: @picture } %>
+<br>
+  <%= link_to '戻る', pictures_path, class: 'btn btn-default' %>

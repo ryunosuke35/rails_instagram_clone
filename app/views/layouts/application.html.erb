@@ -10,16 +10,25 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
-    <% end %>
-    <%= yield %>
+    <header>
+        <ul class="top_menu row">
+          <% if logged_in? %>
+            <li class="col-md-6 col-md-12"><%= link_to "プロフィール", user_path(current_user.id) %></li>
+            <li class="col-md-6 col-md-12"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <% else %>
+            <li class="col-md-6 col-md-12"><%= link_to "新規登録", new_user_path %></li>
+            <li class="col-md-6 col-md-12"><%= link_to "ログイン", new_session_path %></li>
+          <% end %>
+        </ul>
+    </header>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <footer>
+      <p>instagram clone</p>
+    </footer>
   </body>
 </html>

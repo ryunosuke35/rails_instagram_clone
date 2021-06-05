@@ -1,8 +1,13 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
-
-
+<br>
 <%= image_tag @user.profile_picture.url %>
-
-<%= link_to 'プロフィール編集', edit_user_path(@user.id) %>
-<%= link_to '投稿一覧', pictures_path %>
+<table>
+  <tr></tr>
+  <tr>
+    <td><%= link_to 'プロフィール編集', edit_user_path(@user.id), class: 'btn btn-default' %></td>
+  </tr>
+  <tr>
+    <td><%= link_to '投稿一覧', pictures_path, class: 'btn btn-default' %></td>
+  </tr>
+</table>

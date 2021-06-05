@@ -5,12 +5,13 @@
 <% unless @picture.user_id == current_user.id %>
   <% if @favorite.present? %>
 
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-default' %>
   <% else %>
 
-    <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+    <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-default' %>
   <% end %>
 <% end %>
 
-<%= link_to_if(User.find(@picture.user_id) == current_user, '編集', edit_picture_path(@picture.id)){} %> |
-<%= link_to '一覧へ戻る', pictures_path %>
+<%= link_to_if(User.find(@picture.user_id) == current_user, '編集',
+              edit_picture_path(@picture.id), class: 'btn btn-default'){} %>
+<%= link_to '一覧へ戻る', pictures_path, class: 'btn btn-default' %>

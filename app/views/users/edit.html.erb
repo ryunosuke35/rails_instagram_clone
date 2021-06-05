@@ -1,4 +1,4 @@
-<p>プロフィール画像編集</p>
+<h4>プロフィール編集</h4>
 
 
 <% if @user.errors.any? %>
@@ -13,24 +13,37 @@
 <% end %>
 
 <%= form_with(model: @user, url:user_path(@user.id), local: true) do |form| %>
+  <td><%= image_tag @user.profile_picture.url %></td>
+  <table>
+    <tr>
+      <td><%= form.label :名前 %></td>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :メールアドレス %></td>
+      <td><%= form.email_field :email %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :パスワード %></td>
+      <td><%= form.password_field :password %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :確認用パスワード %></td>
+      <td><%= form.password_field :password_confirmation %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :プロフィール画像 %></td>
+      <td><%= form.file_field :profile_picture %></td>
+      <td><%= form.hidden_field :image_cache %></td>
+    </tr>
+  </table>
 
-  <div class="field" >
-    <%= image_tag @user.profile_picture.url %>
-
-    <%= form.label :名前 %>
-    <%= form.text_field :name %>
-    <%= form.label :メールアドレス %>
-    <%= form.email_field :email %>
-    <%= form.label :パスワード %>
-    <%= form.password_field :password %>
-    <%= form.label :確認用パスワード %>
-    <%= form.password_field :password_confirmation %>
-    <%= form.label :プロフィール画像 %>
-    <%= form.file_field :profile_picture %>
-    <%= form.hidden_field :image_cache %>
-
-    <%= form.submit "変更" %>
-  </div>
-  <%= link_to '戻る', user_path(params[:id]) %>
-
+  <table>
+    <tr>
+      <td><%= form.submit "変更" %></td>
+    </tr>
+    <tr>
+      <td><%= link_to '戻る', user_path(params[:id]), class: 'btn btn-default' %></td>
+    </tr>
+  </table>
 <% end %>
