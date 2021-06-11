@@ -14,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
- html {
+  html {
    position: relative;
    min-height: 100%;
  }
@@ -36,7 +36,6 @@
  header {
    width: 100%;
    background-color: white;
-   height: 54px;
    margin: 0;
    opacity: 0.8;
    border: 1px solid;

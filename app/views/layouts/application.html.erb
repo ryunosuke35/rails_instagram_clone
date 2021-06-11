@@ -13,11 +13,11 @@
     <header>
         <ul class="top_menu row">
           <% if logged_in? %>
-            <li class="col-md-6 col-md-12"><%= link_to "プロフィール", user_path(current_user.id) %></li>
-            <li class="col-md-6 col-md-12"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+            <li class="col-md-6 col-xs-6"><%= link_to "プロフィール", user_path(current_user.id) %></li>
+            <li class="col-md-6 col-xs-6"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
           <% else %>
-            <li class="col-md-6 col-md-12"><%= link_to "新規登録", new_user_path %></li>
-            <li class="col-md-6 col-md-12"><%= link_to "ログイン", new_session_path %></li>
+            <li class="col-md-6 col-xs-6"><%= link_to "新規登録", new_user_path %></li>
+            <li class="col-md-6 col-xs-6"><%= link_to "ログイン", new_session_path %></li>
           <% end %>
         </ul>
     </header>
